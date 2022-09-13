@@ -39,9 +39,13 @@ void StratTwo::runStrategy() {
 
 } 
 
-// getter method for equity value
+// getter methods
 int StratTwo::getEquity() {
     return equity;
+}
+
+int StratTwo::getCash() {
+    return cash;
 }
 
 void StratTwo::voidFunction() {

@@ -67,6 +67,7 @@ int main() {
 
     // display results of running simulation
     std::cout << "Final value of strategy one is " << std::to_string(stratone_obj.getEquity() + stratone_obj.getCash()) << std::endl;
-
+    std::cout << "Final value of strategy one is " << std::to_string(strattwo_obj.getEquity() + strattwo_obj.getCash()) << std::endl;
+    std::cout << "Final value of strategy one is " << std::to_string(stratthree_obj.getEquity() + stratthree_obj.getCash()) << std::endl;
     return 0;
 }

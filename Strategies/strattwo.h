@@ -26,6 +26,8 @@ class StratTwo {
 
         int getEquity();
 
+        int getCash();
+        
         void voidFunction();
 
         //std::thread voidFunctionThread();

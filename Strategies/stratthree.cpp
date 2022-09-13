@@ -39,10 +39,16 @@ void StratThree::runStrategy() {
 
 } 
 
-// getter method for equity value
+// getter methods
 int StratThree::getEquity() {
     return equity;
 }
+
+int StratThree::getCash() {
+    return cash;
+}
+
+
 
 void StratThree::voidFunction() {
     std::cout << "3 working" << std::endl;
