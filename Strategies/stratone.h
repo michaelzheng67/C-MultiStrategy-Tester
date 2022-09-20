@@ -4,12 +4,13 @@
 #include <vector>
 #include <thread>
 
+
+// long only strategy
 class StratOne {
     public:
         int cash=100000; // starting off at t = 0 with all cash
         int equity = 0;
-        int avg_position_price = 0;
-        int position_size = 0; // -1 to 1 representing fully short / fully long
+        int position_size = 0; 
         std::vector<float> data;
 
 
@@ -20,7 +21,11 @@ class StratOne {
 
         // strategy
         // returns -1 to 1 depending on what % of portfolio to sell / buy
-        int Strategy(int datapoint);
+        void Strategy(int datapoint);
+
+        void buyShares(int size, int price);
+
+        void sellShares(int size, int price);
 
         void runStrategy();
 
@@ -28,7 +33,7 @@ class StratOne {
 
         int getCash();
 
-        void voidFunction();
+        int getFinalValue();
 
         //std::thread voidFunctionThread();
 };

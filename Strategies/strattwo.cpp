@@ -8,32 +8,43 @@
 StratTwo::StratTwo() : data(0) {}
 
 // constructor
-StratTwo::StratTwo(std::vector<int> data) {
-    data = data;
+StratTwo::StratTwo(std::vector<float> close) {
+    data = close;
 }
 
 // strategy
 // returns 0 to 1 depending on what % of portfolio to have in given equity
-int StratTwo::Strategy(int datapoint) {
-    
+void StratTwo::Strategy(int datapoint) {
     if (datapoint > 100) {
-        return 1;
+        StratTwo::sellShares(10, datapoint);
     } else {
-        return 0;
+        StratTwo::buyShares(10, datapoint);
     }
     
 }
+
+// helper functions
+void StratTwo::buyShares(int size, int price) {
+    if (size * price <= cash) {
+        position_size += size;
+        cash -= size * price;
+    }
+}
+
+void StratTwo::sellShares(int size, int price) {
+    position_size -= size;
+    cash += size * price;
+    
+}
+
 
 // runs the strategy on the given data to the object
 void StratTwo::runStrategy() {
     
     // run strategy on each datapoint
     for (int i=0; i < data.size(); i++) {
-        int new_size = StratTwo::Strategy(data[i]);
-        int difference = position_size - new_size;
-
-        // update cash and equity values
-        
+        equity = position_size * data[i];
+        StratTwo::Strategy(data[i]);
         
     }
 

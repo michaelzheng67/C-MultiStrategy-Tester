@@ -51,14 +51,14 @@ int main() {
 
 
     StratOne stratone_obj(close_vector);
-    StratTwo strattwo_obj;
-    StratThree stratthree_obj;
+    StratTwo strattwo_obj(close_vector);
+    StratThree stratthree_obj(close_vector);
     
 
     // Can scale this to more than the three threads currently
     std::thread stratone_thread(std::bind(&StratOne::runStrategy, std::ref(stratone_obj)));
-    std::thread strattwo_thread(std::bind(&StratTwo::voidFunction, std::ref(strattwo_obj)));
-    std::thread stratthree_thread(std::bind(&StratThree::voidFunction, std::ref(stratthree_obj)));
+    std::thread strattwo_thread(std::bind(&StratTwo::runStrategy, std::ref(strattwo_obj)));
+    std::thread stratthree_thread(std::bind(&StratThree::runStrategy, std::ref(stratthree_obj)));
 
     
     stratone_thread.join();
@@ -67,7 +67,7 @@ int main() {
 
     // display results of running simulation
     std::cout << "Final value of strategy one is " << std::to_string(stratone_obj.getEquity() + stratone_obj.getCash()) << std::endl;
-    std::cout << "Final value of strategy one is " << std::to_string(strattwo_obj.getEquity() + strattwo_obj.getCash()) << std::endl;
-    std::cout << "Final value of strategy one is " << std::to_string(stratthree_obj.getEquity() + stratthree_obj.getCash()) << std::endl;
+    std::cout << "Final value of strategy two is " << std::to_string(strattwo_obj.getEquity() + strattwo_obj.getCash()) << std::endl;
+    std::cout << "Final value of strategy three is " << std::to_string(stratthree_obj.getEquity() + stratthree_obj.getCash()) << std::endl;
     return 0;
 }
