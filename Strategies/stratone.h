@@ -29,6 +29,8 @@ class StratOne {
 
         void runStrategy();
 
+        int walkForwardOptimization(int min, int max);
+
         int getEquity();
 
         int getCash();
